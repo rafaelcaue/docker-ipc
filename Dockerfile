@@ -19,8 +19,7 @@ RUN ./gradlew fatJar
 WORKDIR /home
 
 RUN wget https://gitlab.com/intention-progression-competition/example-gpts/example-gpts/-/archive/release/example-gpts-release.zip
-RUN unzip example-gpts-release.zip -d simulator-server/
-RUN unzip example-gpts-release.zip -d bdi-interface/
+RUN unzip example-gpts-release.zip
 
 
 
@@ -29,6 +28,3 @@ EXPOSE 40000
 
 # default command
 CMD ["bash"]
-
-
-
