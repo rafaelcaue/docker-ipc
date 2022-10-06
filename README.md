@@ -20,7 +20,7 @@ In terminal 2, run the following commands:
 
 Now open another terminal in your machine (terminal 3), we assume you have already cloned https://gitlab.com/intention-progression-competition/example-agents/test-agent   
 Navigate to the folder containing test-agent, and type the following commands (this assumes you have gradle installed in your pc):   
-`gradlew jar`   
+`./gradlew jar`   
 `java -jar build/libs/test-agent.jar`   
 `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
 
