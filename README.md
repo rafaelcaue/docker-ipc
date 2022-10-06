@@ -30,7 +30,6 @@ You should now see the expected messages in all 3 terminals without any errors.
 ## FAQ
 1. How to add a custom GPT to the simulation server?   
 A. There are two ways of doing this:
-   - You can do it live in the container as you would normally, just remember to have a copy in both `bdi-interface` and `simulator-server` (it won't be there again in subsequent runs of the container)
-   - Or to have it permanently added to the container, assuming the name of the file is `gpt-test.xml` and it is in the same folder as Dockerfile, you can add the following commands to lines 23 and 24 of Dockerfile:   
-   `COPY gpt-test.xml /home/simulator-server/example-gpts-release/`   
-   `COPY gpt-test.xml /home/bdi-interface/example-gpts-release/`
+   - You can do it live in the container as you would normally (it won't be there again in subsequent runs of the container)
+   - Or to have it permanently added to the container, assuming the name of the file is `gpt-test.xml` and it is in the same folder as Dockerfile, you can add the following commands to line 23 of Dockerfile:   
+   `COPY gpt-test.xml /home/example-gpts-release/`   
