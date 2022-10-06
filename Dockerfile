@@ -22,6 +22,8 @@ RUN wget https://gitlab.com/intention-progression-competition/example-gpts/examp
 RUN unzip example-gpts-release.zip -d simulator-server/
 RUN unzip example-gpts-release.zip -d bdi-interface/
 
+
+
 EXPOSE 30000
 EXPOSE 40000
 
