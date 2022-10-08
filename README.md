@@ -4,7 +4,7 @@ Command to build the Docker image (sudo/admin rights may be required depending h
 `docker build -t ipc-simulator .`
 
 Command to run the Docker image:   
-`ddocker run -it --rm --network=host --name 127.0.0.1 ipc-simulator bash`
+`docker run -it --rm --network=host --name 127.0.0.1 ipc-simulator bash`
 
 This will open a Docker container terminal, which we refer to as terminal 1.   
 To test, run the following commands in terminal 1:   
