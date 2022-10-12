@@ -14,6 +14,8 @@ RUN ./gradlew fatJar
 WORKDIR /home
 RUN git clone https://gitlab.com/intention-progression-competition/simulator/bdi-interface.git
 WORKDIR /home/bdi-interface
+RUN git pull
+RUN git checkout docker-version
 RUN ./gradlew fatJar
 
 WORKDIR /home
