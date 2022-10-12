@@ -29,26 +29,54 @@ You should now see the expected messages in all 3 terminals without any errors.
 ## Docker server
 
 This assumes you have [Docker](https://www.docker.com/) installed, and that you have already cloned https://gitlab.com/intention-progression-competition/example-agents/test-agent into a folder.   
-Step 1 only needs to be run once.
+Steps 1 and 2 only need to be run once.
 Sudo/admin rights may be required depending on how Docker was installed.   
 Do not alter the Dockerfile unless you are experimenting with something. The Dockerfile for the competition will be used as is (pending any bugfixes).
 
-1. Build the Docker container: `docker build -t ipc-simulator .`
-2. Run the container: `docker run -it --rm -p 40000:40000 -p 30000:30000 ipc-simulator bash`
-3. Run the server: `java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
-4. Open a new terminal and type `docker ps`
-5. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
-6. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
-7. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
-8. Open a new terminal and navigate to the folder containing the `test-agent`
-9. Compile the test agent if you have not done so yet (only needs to be done once and when the source code changes): `./gradlew jar`  
-10. Run the test-agent with: `java -jar build/libs/test-agent.jar` 
-11. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
+1. Clone the Docker server repository: `git clone https://github.com/rafaelcaue/docker-ipc.git`
+2. Build the Docker container: `docker build -t ipc-simulator .`
+3. Run the container: `docker run -it --rm -p 40000:40000 -p 30000:30000 ipc-simulator bash`
+4. Run the server: `java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
+5. Open a new terminal and type `docker ps`
+6. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
+7. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
+8. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
+9. Open a new terminal and navigate to the folder containing the `test-agent`
+10. Compile the test agent if you have not done so yet (only needs to be done once and when the source code changes): `./gradlew jar`  
+11. Run the test-agent with: `java -jar build/libs/test-agent.jar` 
+12. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
 
 You should now see the expected messages in all 3 terminals without any errors.
 
 ## Docker server with Docker solution
-Run steps 1 to 8 from Docker server, and then follow the example in: https://github.com/rafaelcaue/docker-ipc-submission-TestAgent
+
+Note that some steps here will be replicated from the Docker server tutorial, and some may look similar but are different. In doubt just run all of the steps from this part of the tutorial.   
+Steps 1 to 7 only need to be run once (steps 5 to 7 may require repeating if you make changes to your solution).
+
+1. Create the network the containers will use (can be done from any directory): `docker network create ipc_network`
+2. Clone the Docker server repository: `git clone https://github.com/rafaelcaue/docker-ipc.git`
+3. Navigate to the docker-ipc folder
+4. Build the Docker server container: `docker build -t ipc-simulator .`
+5. Clone the Docker IPC submission example repository: `git clone https://github.com/rafaelcaue/docker-ipc-submission-TestAgent.git`
+6. Navigate to the docker-ipc-submission-TestAgent folder
+7. Build the Docker IPC submission container: `docker build -t ipc-submission-testagent .`
+8. Navigate to the docker-ipc folder
+9. Run the server container: `docker run -it --rm --network=ipc_network --name ipc_server ipc-simulator bash`
+10. Run the server: `java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
+11. Open a new terminal and type `docker ps`
+12. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
+13. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
+14. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar -C`
+15. Open a new terminal and navigate to the docker-ipc-submission-TestAgent folder
+16. Run the solution container: `docker run -it --rm --network=ipc_network ipc-submission-testagent`
+17. Run the solution: `java -jar test-agent/build/libs/test-agent.jar -C`
+18. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
+
+You should now see the expected messages in all 3 terminals without any errors.
+
+## Tutorial how to containerise your solution
+
+TBD
 
 ### FAQ
 1. How to add a custom GPT to the simulation server when running the containerised version of the server?   
