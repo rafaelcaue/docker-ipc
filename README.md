@@ -29,22 +29,21 @@ You should now see the expected messages in all 3 terminals without any errors.
 ## Docker server
 
 This assumes you have [Docker](https://www.docker.com/) installed, and that you have already cloned https://gitlab.com/intention-progression-competition/example-agents/test-agent into a folder.   
-Steps 1 and 2 only needs to be run once.
-Sudo/admin rights may be required depending how docker was installed.   
+Step 1 only needs to be run once.
+Sudo/admin rights may be required depending on how Docker was installed.   
 Do not alter the Dockerfile unless you are experimenting with something. The Dockerfile for the competition will be used as is (pending any bugfixes).
 
-1. Create the network the containers will use: `docker network create ipc_network`
-2. Build the Docker container: `docker build -t ipc-simulator .`
-3. Run the container: `docker run -it --rm --network=ipc_network --name 127.0.0.1 ipc-simulator bash`
-4. Run the server: `java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
-5. Open a new terminal and type `docker ps`
-6. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
-7. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
-8. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
-9. Open a new terminal and navigate to the folder containing the `test-agent`
-10. Compile the test agent if you have not done so yet (only needs to be done once and when the source code changes): `./gradlew jar`  
-11. Run the test-agent with: `java -jar build/libs/test-agent.jar` 
-12. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
+1. Build the Docker container: `docker build -t ipc-simulator .`
+2. Run the container: `docker run -it --rm -p 40000:40000 -p 30000:30000 ipc-simulator bash`
+3. Run the server: `java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
+4. Open a new terminal and type `docker ps`
+5. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
+6. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
+7. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
+8. Open a new terminal and navigate to the folder containing the `test-agent`
+9. Compile the test agent if you have not done so yet (only needs to be done once and when the source code changes): `./gradlew jar`  
+10. Run the test-agent with: `java -jar build/libs/test-agent.jar` 
+11. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
 
 You should now see the expected messages in all 3 terminals without any errors.
 
