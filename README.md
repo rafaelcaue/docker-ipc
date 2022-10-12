@@ -24,10 +24,11 @@ Steps 1 to 9 only have to be run once (you may need to update the repositories w
 15. Run the test-agent with: `java -jar test-agent/build/libs/test-agent.jar`
 16. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
 
+You should now see the expected messages in all 3 terminals without any errors.
 
 ## Docker server
 
-This assumes you have [Docker](https://www.docker.com/) installed.   
+This assumes you have [Docker](https://www.docker.com/) installed, and that you have already cloned https://gitlab.com/intention-progression-competition/example-agents/test-agent into a folder.   
 Steps 1 and 2 only needs to be run once.
 Sudo/admin rights may be required depending how docker was installed.   
 Do not alter the Dockerfile unless you are experimenting with something. The Dockerfile for the competition will be used as is (pending any bugfixes).
@@ -40,31 +41,18 @@ Do not alter the Dockerfile unless you are experimenting with something. The Doc
 6. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
 7. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
 8. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
-
-
-## Local solution execution (using a test agent)
-
-Now open another terminal in your machine (terminal 3), we assume you have already cloned https://gitlab.com/intention-progression-competition/example-agents/test-agent   
-Navigate to the folder containing test-agent, and type the following commands (this assumes you have gradle installed in your pc):   
-`./gradlew jar`   
-`java -jar build/libs/test-agent.jar`   
-`<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
+9. Open a new terminal and navigate to the folder containing the `test-agent`
+10. Compile the test agent if you have not done so yet (only needs to be done once and when the source code changes): `./gradlew jar`  
+11. Run the test-agent with: `java -jar build/libs/test-agent.jar` 
+12. To test, provide the first command, for example with: `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
 
 You should now see the expected messages in all 3 terminals without any errors.
 
 ## Docker server with Docker solution
-
-
-
-
-
-## Containerising your solution for submission
-
-Follow the example in: https://github.com/rafaelcaue/docker-ipc-submission-TestAgent
-
+Run steps 1 to 8 from Docker server, and then follow the example in: https://github.com/rafaelcaue/docker-ipc-submission-TestAgent
 
 ### FAQ
-1. How to add a custom GPT to the simulation server?   
+1. How to add a custom GPT to the simulation server when running the containerised version of the server?   
 A. There are two ways of doing this:
    - You can do it live in the container as you would normally (it won't be there again in subsequent runs of the container)
    - Or to have it permanently added to the container, assuming the name of the file is `gpt-test.xml` and it is in the same folder as Dockerfile, you can add the following commands to line 23 of Dockerfile:   
