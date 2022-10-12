@@ -27,31 +27,20 @@ Steps 1 to 9 only have to be run once (you may need to update the repositories w
 
 ## Docker server
 
-## Docker server with Docker solution
+This assumes you have [Docker](https://www.docker.com/) installed.   
+Steps 1 and 2 only needs to be run once.
+Sudo/admin rights may be required depending how docker was installed.   
+Do not alter the Dockerfile unless you are experimenting with something. The Dockerfile for the competition will be used as is (pending any bugfixes).
 
+1. Create the network the containers will use: `docker network create ipc_network`
+2. Build the Docker container: `docker build -t ipc-simulator .`
+3. Run the container: `docker run -it --rm --network=ipc_network --name 127.0.0.1 ipc-simulator bash`
+4. Run the server: `java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
+5. Open a new terminal and type `docker ps`
+6. Copy the ID associated with the container ipc-simulator obtained from the docker ps command
+7. Replace <container_id> with the ID from the previous step: `docker exec -it <container_id> bash`
+8. Run the bdi-interface: `java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
 
-This assumes you have [Docker](https://www.docker.com/) installed already.
-
-Run the following command only once to create the network the containers will use (sudo/admin rights may be required depending how docker was installed)::
-`docker network create ipc_network`
-
-Command to build the Docker image (sudo/admin rights may be required depending how docker was installed):   
-`docker build -t ipc-simulator .`
-
-Command to run the Docker image:   
-`docker run -it --rm --network=ipc_network --name ipc_server ipc-simulator bash`
-
-This will open a Docker container terminal, which we refer to as terminal 1.   
-To test, run the following commands in terminal 1:   
-`java -jar simulator-server/build/libs/simulator-server-all-1.0.jar`
-
-Now open another terminal on your machine, and type the following commands:   
-`docker ps`   
-`docker exec -it <container_id> bash`   
-(replace <container_id> with the id associated with the container ipc-simulator obtained from the docker ps command)   
-This will open a second Docker container terminal, which we refer to as terminal 2.   
-In terminal 2, run the following commands:   
-`java -jar bdi-interface/build/libs/bdi-interface-all-1.0.jar`
 
 ## Local solution execution (using a test agent)
 
@@ -62,6 +51,11 @@ Navigate to the folder containing test-agent, and type the following commands (t
 `<?xml version="1.0" encoding="UTF-8"?><command clientid="UONTEST1"><initiate><seed>10000</seed><gptfile>example-gpts-release/logistics/gpt-t5-a5-p10.xml</gptfile></initiate></command>`
 
 You should now see the expected messages in all 3 terminals without any errors.
+
+## Docker server with Docker solution
+
+
+
 
 
 ## Containerising your solution for submission
