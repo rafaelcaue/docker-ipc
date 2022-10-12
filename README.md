@@ -1,3 +1,4 @@
+# Running the Intention Progression Competition
 There are 3 ways of running the Intention Progression Competition:
 1. **Local:** cloning the server and bdi-interface repositories and running everything locally. This is only recommended if you want to experiment with the source code of the server outside of the competition.
 2. **Docker server:** the server and the bdi-interface run inside a Docker container and you run your solution locally. This is the recommended way of running it during the development/testing stages of your solution.
