@@ -75,7 +75,7 @@ Steps 1 to 7 only need to be run once (steps 5 to 7 may require repeating if you
 
 You should now see the expected messages in all 3 terminals without any errors.
 
-## Tutorial how to containerise your solution
+## Tutorial on how to containerise your solution
 
 TBD
 
