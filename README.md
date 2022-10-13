@@ -77,7 +77,9 @@ You should now see the expected messages in all 3 terminals without any errors.
 
 ## Tutorial on how to containerise your solution
 
-TBD
+You can use the containerised version of the test-agent shown in the step above (also available here: https://github.com/rafaelcaue/docker-ipc-submission-TestAgent) as an example of how to setup your Dockerfile.   
+
+
 
 ### FAQ
 1. How to add a custom GPT to the simulation server when running the containerised version of the server?   
