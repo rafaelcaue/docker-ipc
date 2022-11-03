@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /home
 RUN git clone https://gitlab.com/intention-progression-competition/simulator/simulator-server.git
 WORKDIR /home/simulator-server
+RUN git pull
+RUN git checkout docker-version
 RUN ./gradlew fatJar
 
 
@@ -22,6 +24,11 @@ WORKDIR /home
 
 RUN wget https://gitlab.com/intention-progression-competition/example-gpts/example-gpts/-/archive/release/example-gpts-release.zip
 RUN unzip example-gpts-release.zip
+RUN rm example-gpts-release.zip
+RUN mkdir gpts
+RUN mv example-gpts-release example-gpts
+RUN mv example-gpts gpts/
+COPY test-gpts /home/gpts/test-gpts
 
 
 EXPOSE 30000

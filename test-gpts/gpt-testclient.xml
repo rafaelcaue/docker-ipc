@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Forest>
+  <Environment>
+    <Literal name="EV-11" stochastic="true" initVal="false" />
+    <Literal name="EV-12" stochastic="true" initVal="false" />
+    <Literal name="G-1" stochastic="false" initVal="false" />
+    <Literal name="EV-13" stochastic="true" initVal="true" />
+    <Literal name="G-0" stochastic="false" initVal="false" />
+    <Literal name="EV-14" stochastic="true" initVal="false" />
+    <Literal name="EV-10" stochastic="true" initVal="true" />
+    <Literal name="EV-19" stochastic="true" initVal="true" />
+    <Literal name="EV-0" stochastic="true" initVal="true" />
+    <Literal name="EV-15" stochastic="true" initVal="true" />
+    <Literal name="EV-1" stochastic="true" initVal="false" />
+    <Literal name="EV-16" stochastic="true" initVal="true" />
+    <Literal name="EV-2" stochastic="true" initVal="true" />
+    <Literal name="EV-17" stochastic="true" initVal="false" />
+    <Literal name="EV-3" stochastic="true" initVal="false" />
+    <Literal name="EV-18" stochastic="true" initVal="true" />
+    <Literal name="EV-4" stochastic="true" initVal="false" />
+    <Literal name="EV-5" stochastic="true" initVal="true" />
+    <Literal name="EV-6" stochastic="true" initVal="true" />
+    <Literal name="EV-7" stochastic="true" initVal="false" />
+    <Literal name="EV-8" stochastic="true" initVal="true" />
+    <Literal name="EV-9" stochastic="true" initVal="true" />
+  </Environment>
+  <Goal name="T0-G0" goal-condition="(G-0,true);">
+    <Plan name="T0-P0" precondition="(EV-8,true);">
+      <Action name="T0-A0" precondition="(EV-8,true);" postcondition="(EV-5,false);" />
+      <Action name="T0-A1" precondition="(EV-5,false);" postcondition="(EV-3,true);" />
+      <Goal name="T0-G1" goal-condition="(EV-4,true);">
+        <Plan name="T0-P1" precondition="(EV-5,false);">
+          <Action name="T0-A2" precondition="(EV-5,false);" postcondition="(EV-2,false);" />
+          <Action name="T0-A3" precondition="(EV-2,false);" postcondition="(EV-1,true), (EV-4,true);" />
+        </Plan>
+        <Plan name="T0-P2" precondition="(EV-3,true);">
+          <Action name="T0-A4" precondition="(EV-3,true);" postcondition="(EV-19,false);" />
+          <Action name="T0-A5" precondition="(EV-19,false);" postcondition="(EV-1,true), (EV-4,true);" />
+        </Plan>
+      </Goal>
+      <Goal name="T0-G2" goal-condition="(EV-13,false), (G-0,true);">
+        <Plan name="T0-P3" precondition="(EV-4,true);">
+          <Action name="T0-A6" precondition="(EV-4,true);" postcondition="(EV-15,false);" />
+          <Action name="T0-A7" precondition="(EV-4,true);" postcondition="(EV-10,false), (EV-13,false), (G-0,true);" />
+        </Plan>
+        <Plan name="T0-P4" precondition="(EV-8,true);">
+          <Action name="T0-A8" precondition="(EV-8,true);" postcondition="(EV-19,false);" />
+          <Action name="T0-A9" precondition="(EV-8,true);" postcondition="(EV-7,true), (EV-13,false), (G-0,true);" />
+        </Plan>
+      </Goal>
+    </Plan>
+    <Plan name="T0-P5" precondition="(EV-8,false);">
+      <Action name="T0-A10" precondition="(EV-8,false);" postcondition="(EV-7,true);" />
+      <Action name="T0-A11" precondition="(EV-7,true);" postcondition="(EV-3,true);" />
+      <Goal name="T0-G3" goal-condition="(EV-0,false);">
+        <Plan name="T0-P6" precondition="(EV-3,true);">
+          <Action name="T0-A12" precondition="(EV-3,true);" postcondition="(EV-7,true);" />
+          <Action name="T0-A13" precondition="(EV-3,true);" postcondition="(EV-13,false), (EV-0,false);" />
+        </Plan>
+        <Plan name="T0-P7" precondition="(EV-7,true);">
+          <Action name="T0-A14" precondition="(EV-7,true);" postcondition="(EV-19,false);" />
+          <Action name="T0-A15" precondition="(EV-7,true);" postcondition="(EV-9,false), (EV-0,false);" />
+        </Plan>
+      </Goal>
+      <Goal name="T0-G4" goal-condition="(EV-10,false), (G-0,true);">
+        <Plan name="T0-P8" precondition="(EV-0,false);">
+          <Action name="T0-A16" precondition="(EV-0,false);" postcondition="(EV-4,true);" />
+          <Action name="T0-A17" precondition="(EV-0,false);" postcondition="(EV-2,false), (EV-10,false), (G-0,true);" />
+        </Plan>
+        <Plan name="T0-P9" precondition="(EV-8,false);">
+          <Action name="T0-A18" precondition="(EV-8,false);" postcondition="(EV-5,false);" />
+          <Action name="T0-A19" precondition="(EV-8,false);" postcondition="(EV-0,false), (EV-10,false), (G-0,true);" />
+        </Plan>
+      </Goal>
+    </Plan>
+  </Goal>
+  <Goal name="T1-G0" goal-condition="(G-1,true);">
+    <Plan name="T1-P0" precondition="(EV-3,false);">
+      <Action name="T1-A0" precondition="(EV-3,false);" postcondition="(EV-7,true);" />
+      <Action name="T1-A1" precondition="(EV-3,false);" postcondition="(EV-19,false);" />
+      <Goal name="T1-G1" goal-condition="(EV-4,true);">
+        <Plan name="T1-P1" precondition="(EV-3,false);">
+          <Action name="T1-A2" precondition="(EV-3,false);" postcondition="(EV-15,false);" />
+          <Action name="T1-A3" precondition="(EV-15,false);" postcondition="(EV-6,false), (EV-4,true);" />
+        </Plan>
+        <Plan name="T1-P2" precondition="(EV-19,false);">
+          <Action name="T1-A4" precondition="(EV-19,false);" postcondition="(EV-2,false);" />
+          <Action name="T1-A5" precondition="(EV-2,false);" postcondition="(EV-17,true), (EV-4,true);" />
+        </Plan>
+      </Goal>
+      <Goal name="T1-G2" goal-condition="(EV-13,false), (G-1,true);">
+        <Plan name="T1-P3" precondition="(EV-19,false);">
+          <Action name="T1-A6" precondition="(EV-19,false);" postcondition="(EV-18,false);" />
+          <Action name="T1-A7" precondition="(EV-19,false);" postcondition="(EV-9,false), (EV-13,false), (G-1,true);" />
+        </Plan>
+        <Plan name="T1-P4" precondition="(EV-7,true);">
+          <Action name="T1-A8" precondition="(EV-7,true);" postcondition="(EV-2,false);" />
+          <Action name="T1-A9" precondition="(EV-7,true);" postcondition="(EV-18,false), (EV-13,false), (G-1,true);" />
+        </Plan>
+      </Goal>
+    </Plan>
+    <Plan name="T1-P5" precondition="(EV-3,true);">
+      <Action name="T1-A10" precondition="(EV-3,true);" postcondition="(EV-10,false);" />
+      <Action name="T1-A11" precondition="(EV-10,false);" postcondition="(EV-5,false);" />
+      <Goal name="T1-G3" goal-condition="(EV-14,true);">
+        <Plan name="T1-P6" precondition="(EV-10,false);">
+          <Action name="T1-A12" precondition="(EV-10,false);" postcondition="(EV-6,false);" />
+          <Action name="T1-A13" precondition="(EV-10,false);" postcondition="(EV-4,true), (EV-14,true);" />
+        </Plan>
+        <Plan name="T1-P7" precondition="(EV-5,false);">
+          <Action name="T1-A14" precondition="(EV-5,false);" postcondition="(EV-13,false);" />
+          <Action name="T1-A15" precondition="(EV-13,false);" postcondition="(EV-12,true), (EV-14,true);" />
+        </Plan>
+      </Goal>
+      <Goal name="T1-G4" goal-condition="(EV-8,false), (G-1,true);">
+        <Plan name="T1-P8" precondition="(EV-14,true);">
+          <Action name="T1-A16" precondition="(EV-14,true);" postcondition="(EV-12,true);" />
+          <Action name="T1-A17" precondition="(EV-12,true);" postcondition="(EV-8,false), (EV-8,false), (G-1,true);" />
+        </Plan>
+        <Plan name="T1-P9" precondition="(EV-10,false);">
+          <Action name="T1-A18" precondition="(EV-10,false);" postcondition="(EV-7,true);" />
+          <Action name="T1-A19" precondition="(EV-7,true);" postcondition="(EV-4,true), (EV-8,false), (G-1,true);" />
+        </Plan>
+      </Goal>
+    </Plan>
+  </Goal>
+</Forest>
