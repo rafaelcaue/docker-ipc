@@ -85,5 +85,5 @@ You can use the containerised version of the test-agent shown in the step above 
 1. How to add a custom GPT to the simulation server when running the containerised version of the server?   
 A. There are two ways of doing this:
    - You can do it live in the container as you would normally (it won't be there again in subsequent runs of the container)
-   - Or to have it permanently added to the container, assuming the name of the file is `gpt-test.xml` and it is in the same folder as Dockerfile, you can add the following commands to line 32 of Dockerfile:   
-   `COPY gpt-test.xml /home/example-gpts-release/`   
+   - Or to have it permanently added to the container, assuming the name of the file is `gpt-test.xml` and it is in the same folder as Dockerfile, you can add the following commands to line 32 of Dockerfile (add more subfolders if you wish):   
+   `COPY gpt-test.xml /home/gpts/`   
