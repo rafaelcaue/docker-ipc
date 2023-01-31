@@ -9,7 +9,7 @@ WORKDIR /home
 RUN git clone https://gitlab.com/intention-progression-competition/simulator/simulator-server.git
 WORKDIR /home/simulator-server
 RUN git pull
-RUN git checkout docker-version
+RUN git checkout release
 RUN ./gradlew fatJar
 
 
@@ -17,7 +17,7 @@ WORKDIR /home
 RUN git clone https://gitlab.com/intention-progression-competition/simulator/bdi-interface.git
 WORKDIR /home/bdi-interface
 RUN git pull
-RUN git checkout docker-version
+RUN git checkout release
 RUN ./gradlew fatJar
 
 WORKDIR /home
